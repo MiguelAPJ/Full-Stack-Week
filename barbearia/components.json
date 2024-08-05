@@ -14,4 +14,4 @@
     "components": "@/app/_components",
     "utils": "@/app/_lib/utils"
   }
-}npx shadcn-ui@latest add button
+}
