@@ -39,3 +39,4 @@ Bibliotecas instaladas
 prisma
 ts-node
 prettier
+shadcn-ui
