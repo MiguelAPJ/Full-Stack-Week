@@ -40,3 +40,5 @@ prisma
 ts-node
 prettier
 shadcn-ui
+husky
+lint_staged
