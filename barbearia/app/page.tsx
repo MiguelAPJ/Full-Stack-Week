@@ -14,6 +14,11 @@ import BarbershopItem from "./_components/barbershop-item";
 const Home = async () => {
   // chamando o banco de dados
   const barbershops = await db.barbershop.findMany({})
+  const popularBarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: 'desc',
+    }
+  })
   return (
   <div>
     {/* header */}
@@ -67,6 +72,8 @@ const Home = async () => {
 
       </Card>
 
+      {/* Recomendados */}
+
       <h2 className="uppercase font-bold text-xs text-gray-400 mb-3 mt-6">
         Recomendados
       </h2>
@@ -77,9 +84,29 @@ const Home = async () => {
           
         ))}
       </div>     
-      
+      {/* Populares */}
+
+      <h2 className="uppercase font-bold text-xs text-gray-400 mb-3 mt-6">
+        Populares
+      </h2>
+
+      <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+        {popularBarbershops.map((barbershop) => (
+          <BarbershopItem key={barbershop.id} barbershop={barbershop}/>
+          
+        ))}
+      </div>
+             
 
     </div>
+    {/* Footer  */}   
+    <footer>
+      <Card className="">
+        <CardContent className="px-6 py-6">
+          <p className="text-sm text-gray-400">© 2023 Copyright <span className="font-bold">FSW Barber</span></p>
+        </CardContent>
+      </Card>
+    </footer>
   </div>
   ) 
   
