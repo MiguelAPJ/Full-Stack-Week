@@ -1,7 +1,7 @@
 import { Button } from "./_components/ui/button";
 import Header from "./_components/header"
 import { Input } from "./_components/ui/input"
-import { SearchIcon } from "lucide-react";
+import { EyeIcon, FootprintsIcon, SearchIcon } from "lucide-react";
 import Image  from "next/image"
 import { Card, CardContent } from "./_components/ui/card";
 import { Badge } from "./_components/ui/badge"
@@ -32,6 +32,39 @@ const Home = async () => {
           <SearchIcon />
         </Button>
       </div>
+
+      {/* Categorias -  Busca rapida */}
+
+      <div className="flex gap-3 my-6 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+        <Button className="gap-2" variant="secondary">
+          <Image alt="Cabelo" src="/tesoura.svg" width={16} height={16}/>
+          Cabelo
+        </Button>
+
+        
+        <Button className="gap-2" variant="secondary">
+          <Image alt="barba" src="/barba.svg" width={16} height={16}/>
+          Barba
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <Image alt="pezinho barba" src="/lamina.svg" width={16} height={16}/>
+          Acabamento
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <FootprintsIcon size={16} />
+          Pézinho
+        </Button>
+
+        <Button className="gap-2" variant="secondary">
+          <EyeIcon size={16} />
+          Sobrancelha
+        </Button>
+        
+      </div>
+
+
 
       <div className="relative w-full h-[150px] mt-6 ">
         <Image 
