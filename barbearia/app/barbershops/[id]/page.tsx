@@ -6,6 +6,8 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import  ServiceItem  from "../../_components/service-item"
 import PhoneItem from "../../_components/phone-item"
+import SidebarSheet from "@/app/_components/sidebar-sheet"
+import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
 
 interface BarbershopPageProps {
   params: {
@@ -40,15 +42,20 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           className="object-cover"
         />
 
-        <Button size="icon" variant="secondary" className="absolute top-4 left-4" asChild>
+        <Button size="icon" variant="secondary" className="absolute left-4 top-4" asChild>
           <Link href="/">
-            <ChevronLeftIcon  />  
+            <ChevronLeftIcon />
           </Link>
         </Button>
 
-        <Button size="icon" variant="secondary" className="absolute top-4 right-4">
-          <MenuIcon  />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button size="icon" variant="outline" className="absolute right-4 top-4">
+              <MenuIcon></MenuIcon>
+            </Button>
+          </SheetTrigger>
+          <SidebarSheet />
+        </Sheet>     
 
       </div>
 
