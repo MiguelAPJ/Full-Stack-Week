@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import  ServiceItem  from "../../_components/service-item"
+import PhoneItem from "../../_components/phone-item"
 
 interface BarbershopPageProps {
   params: {
@@ -23,12 +24,10 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
     }
   })
 
-
-
-
+  // Qaundo colocar a URL errada com o ID, aparecera o erro notfound
   if (!barbershop) {
     return notFound()
-  }
+  }  
 
   return (
     <div>
@@ -74,7 +73,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
       </div>
 
       {/* Serviços */}
-      <div className="p-5 space-y-3">
+      <div className="p-5 space-y-3 border-b border-solid">
         <h2 className="text-xs font-bold uppercase text-gray-400">Serviços</h2>
         <div className="space-y-3">          
           {barbershop.services.map((service) => (
@@ -83,6 +82,16 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
 
         </div>
       </div>
+
+      {/* Contatos */}
+      <div className="p-5 space-y-3">
+        {barbershop.phones.map(phone =>(
+          <PhoneItem key={phone} phone={phone}/>
+        ))}
+      </div>
+
+      {/* Footer  */}   
+      
 
     </div>
   );
