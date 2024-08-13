@@ -1,3 +1,4 @@
+"use client"
 
 import Image  from "next/image"
 import { Button } from "./ui/button";
@@ -7,8 +8,18 @@ import { quickSearchOptions } from "../_constants/search";
 
 import Link from "next/link";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { signIn, useSession } from "next-auth/react";
+import { Avatar, AvatarImage } from "./ui/avatar";
+
 
 const SidebarSheet = () => {
+  
+  const { data } = useSession()
+
+  //Login google 
+  const handleLoginWithGoogleClick = async () => signIn("google")
+ 
+  
   return (   
       
     <SheetContent className="overscroll-y-auto">
@@ -18,36 +29,47 @@ const SidebarSheet = () => {
 
       {/* Avatar */}
       <div className="py-5 border-b border-solid flex items-center gap-3 justify-between">
-        <h2 className="font-bold">Olá, faça seu login</h2>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button size="icon">
-              <LogInIcon />
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="w-[90%]">
-            <DialogHeader>
-              <DialogTitle>Faça login na plataforma</DialogTitle>
-              <DialogDescription>
-                Conecte-se usando sua conta do Google
-              </DialogDescription>
-            </DialogHeader>
-            <Button variant="outline" className="gap-2 font-bold">
-              <Image alt="Fzer login com o google" src="/Google.svg" width={18} height={18} />
-              Google
-            </Button>
-          </DialogContent>
-        </Dialog>
-        {/* <Avatar>
-          <AvatarImage className="object-fill" src="https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
-        </Avatar>
-        <div>
-          <p className="font-bold">Miguel Junior</p>
-          <p className="text-xs">migueljuju@gmail.com</p>
-        </div> */}
+        
+       {data?.user ? ( 
+          <div className="felx items-center gap-2">
+            <Avatar>
+              <AvatarImage className="object-fill" src={data.user.image ?? ""}/>
+            </Avatar>
+            <div>
+              <p className="font-bold">{data.user.name}</p>
+              <p className="text-xs">{data.user.email}</p>
+            </div>
+          </div>
+        ):(
+          <>
+            <h2 className="font-bold">Olá, faça seu login</h2>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="icon">
+                  <LogInIcon />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="w-[90%]">
+                <DialogHeader>
+                  <DialogTitle>Faça login na plataforma</DialogTitle>
+                  <DialogDescription>
+                    Conecte-se usando sua conta do Google
+                  </DialogDescription>
+                </DialogHeader>
+                <Button 
+                  variant="outline" 
+                  className="gap-2 font-bold" 
+                  onClick={handleLoginWithGoogleClick}
+                >
+                  <Image alt="Fzer login com o google" src="/Google.svg" width={18} height={18} />
+                  Google
+                </Button>
+              </DialogContent>
+            </Dialog>            
+          </>
+        )}
+
       </div>
-
-
 
       {/* botão inicio e agendamento */}
       <div className="py-5 flex flex-col gap-4 border-b border-solid">
