@@ -42,3 +42,5 @@ prettier
 shadcn-ui
 husky
 lint_staged
+next-auth
+auth/prisma-adapter
