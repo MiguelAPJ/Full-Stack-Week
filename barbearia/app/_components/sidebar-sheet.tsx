@@ -8,16 +8,20 @@ import { quickSearchOptions } from "../_constants/search";
 
 import Link from "next/link";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 
 const SidebarSheet = () => {
   
+  // PEgar os dados do login
   const { data } = useSession()
 
   //Login google 
   const handleLoginWithGoogleClick = async () => signIn("google")
+
+  // Deslogar do google
+  const handleLogoutClick = () => signOut()
  
   
   return (   
@@ -31,7 +35,7 @@ const SidebarSheet = () => {
       <div className="py-5 border-b border-solid flex items-center gap-3 justify-between">
         
        {data?.user ? ( 
-          <div className="felx items-center gap-2">
+          <div className="flex items-center gap-2">
             <Avatar>
               <AvatarImage className="object-fill" src={data.user.image ?? ""}/>
             </Avatar>
@@ -100,7 +104,11 @@ const SidebarSheet = () => {
 
       {/* Botão sair */}
       <div className="py-5 flex flex-col gap-4 border-b border-solid">
-        <Button className="justify-start gap-2" variant="ghost">
+        <Button 
+          className="justify-start gap-2" 
+          variant="ghost"
+          onClick={handleLogoutClick}
+        >
           <LogOutIcon size={18}/>                
           Sair da Conta
         </Button>                          
