@@ -44,3 +44,4 @@ husky
 lint_staged
 next-auth
 auth/prisma-adapter
+react-hook-form
