@@ -16,3 +16,4 @@ bun dev
 
 #bibliotecas instaladas
 - prisma
+- tailwindcss
