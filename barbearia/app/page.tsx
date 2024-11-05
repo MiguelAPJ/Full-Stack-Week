@@ -37,7 +37,7 @@ const Home = async () => {
 
       {/* Categorias -  Busca rapida */}
 
-      <div className="flex gap-3 my-6 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+      <div className="flex gap-3 my-6 mt-6 overflow-x-scrol[&::-webkit-scrollbar]:hidden ">
         {quickSearchOptions.map(option => 
           <Button className="gap-2" variant="secondary" key={option.title}>
             <Image 
