@@ -18,6 +18,8 @@ bun dev
 - prisma
 - tailwindcss
 - shadcn
+- clerk - autenticação
+- clerk/theme
 
 
 
