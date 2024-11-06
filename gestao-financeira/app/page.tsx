@@ -1,5 +1,7 @@
+import { Button } from "./_components/ui/button";
+
 const Home = () => {
-  return <h1 className="text-rose-500">oi</h1>
+  return <Button>Oi</Button>
 }
 
 export default Home;

@@ -17,3 +17,11 @@ bun dev
 #bibliotecas instaladas
 - prisma
 - tailwindcss
+- shadcn
+
+
+
+
+
+#componentes do shadcn
+- button
