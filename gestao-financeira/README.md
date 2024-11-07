@@ -20,6 +20,8 @@ bun dev
 - shadcn
 - clerk - autenticação
 - clerk/theme
+- prisma/client 5.21.1
+- react table
 
 
 
@@ -27,3 +29,5 @@ bun dev
 
 #componentes do shadcn
 - button
+- Data Table
+- Badge 2.1.3
