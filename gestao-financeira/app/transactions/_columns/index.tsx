@@ -1,13 +1,17 @@
-"use client"
-import { Transaction } from "@prisma/client"
-import { ColumnDef } from "@tanstack/react-table"
-import TransactionTypeBadge from "../_components/type-badge"
-import { Button } from "@/app/_components/ui/button"
-import { PencilIcon, TrashIcon } from "lucide-react"
-import { TRANSACTION_CATEGORY_LABELS, TRANSACTION_PAYMENT_METHOD_LABELS } from "@/app/_constants/transactions"
+"use client";
 
+import { Transaction } from "@prisma/client";
+import { ColumnDef } from "@tanstack/react-table";
+import TransactionTypeBadge from "../_components/type-badge";
+import { Button } from "@/app/_components/ui/button";
+import { TrashIcon } from "lucide-react";
+import {
+  TRANSACTION_CATEGORY_LABELS,
+  TRANSACTION_PAYMENT_METHOD_LABELS,
+} from "@/app/_constants/transactions";
+import EditTransactionButton from "../_components/edit-transaction-button";
 
-export const TransactionColumns: ColumnDef<Transaction>[] = [
+export const transactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "name",
     header: "Nome",
@@ -15,9 +19,9 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "type",
     header: "Tipo",
-    cell: ({ row: { original: transaction } }) =>
+    cell: ({ row: { original: transaction } }) => (
       <TransactionTypeBadge transaction={transaction} />
-
+    ),
   },
   {
     accessorKey: "category",
@@ -38,8 +42,8 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
       new Date(transaction.date).toLocaleDateString("pt-BR", {
         day: "2-digit",
         month: "long",
-        year: "numeric"
-      })
+        year: "numeric",
+      }),
   },
   {
     accessorKey: "amount",
@@ -51,22 +55,17 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
       }).format(Number(transaction.amount)),
   },
   {
-    accessorKey: 'actions',
+    accessorKey: "actions",
     header: "Ações",
-    cell: () => {
+    cell: ({ row: { original: transaction } }) => {
       return (
         <div className="space-x-1">
-          <Button variant="ghost" size="icon" className="text-muted-foreground">
-            <PencilIcon />
-          </Button>
+          <EditTransactionButton transaction={transaction} />
           <Button variant="ghost" size="icon" className="text-muted-foreground">
             <TrashIcon />
           </Button>
         </div>
-      )
-    }
-
+      );
+    },
   },
-
-
-]
+];
