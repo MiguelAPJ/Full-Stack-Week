@@ -22,6 +22,7 @@ bun dev
 - clerk/theme
 - prisma/client 5.21.1
 - react table
+- react-number-format 5.4.2
 
 
 
@@ -31,3 +32,9 @@ bun dev
 - button
 - Data Table
 - Badge 2.1.3
+- Dialog 2.1.3
+- form 2.1.3
+- input 2.1.3
+- select 2.1.3
+- popover 2.1.3
+- calendar 2.1.3
