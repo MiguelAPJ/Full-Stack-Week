@@ -75,8 +75,9 @@ const UpsertTransactionDialog = ({ isOpen, setIsOpen, defaultValues, transaction
     } catch (error) {
       console.log(error)
     }
-
   }
+  const isUpdate = Boolean(transactionId)
+
   return (
     <Dialog
       open={isOpen}
@@ -91,7 +92,7 @@ const UpsertTransactionDialog = ({ isOpen, setIsOpen, defaultValues, transaction
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Adicionar Transação </DialogTitle>
+          <DialogTitle>{isUpdate ? 'Atualizar' : 'Criar'} Transação </DialogTitle>
           <DialogDescription>
             Insira a informações abaixo
           </DialogDescription>
@@ -241,7 +242,7 @@ const UpsertTransactionDialog = ({ isOpen, setIsOpen, defaultValues, transaction
               <DialogClose asChild >
                 <Button type="button" variant="outline">Cancelar</Button>
               </DialogClose>
-              <Button type="submit">Adicionar</Button>
+              <Button type="submit">{isUpdate ? 'Atualizar' : "Adicionar"}</Button>
             </DialogFooter>
           </form>
         </Form>
