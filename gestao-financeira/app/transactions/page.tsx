@@ -26,7 +26,8 @@ const TransactionsPage = async () => {
           <h1 className="text-2xl font-bold">Transações</h1>
           <AddTransactionButton />
         </div>
-        <DataTable columns={transactionColumns} data={JSON.parse(JSON.stringify(transactions))} />
+        {/* <DataTable columns={transactionColumns} data={JSON.parse(JSON.stringify(transactions))} /> */}
+        <DataTable columns={transactionColumns} data={transactions} />
       </div>
     </>
   );
