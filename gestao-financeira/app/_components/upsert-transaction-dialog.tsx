@@ -15,11 +15,10 @@ import { upsertTransaction } from "../_actions/upsert-transaction";
 
 
 interface UpsertTransactionDialogProps {
-
-  isOpen: boolean,
-  setIsOpen: (isOpen: boolean) => void
-  transactionId?: string
-  defaultValues?: FormSchema
+  isOpen: boolean;
+  defaultValues?: FormSchema;
+  transactionId?: string;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 //Campos obrigatorios do formulario
@@ -43,19 +42,19 @@ const formSchema = z.object({
     required_error: "o método de pagamento é obrigatório"
   }),
   date: z.date({
-    required_error: "A data é obrigatória"
-  })
+    required_error: "A data é obrigatória.",
+  }),
 
 })
 
-type FormSchema = z.infer<typeof formSchema>
+type FormSchema = z.infer<typeof formSchema>;
 
 const UpsertTransactionDialog = ({ isOpen, setIsOpen, defaultValues, transactionId }: UpsertTransactionDialogProps) => {
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues ?? {
-      amount: 50,
+      amount: 0,
       category: TransactionCategory.OTHER,
       date: new Date(),
       name: "",
@@ -89,8 +88,7 @@ const UpsertTransactionDialog = ({ isOpen, setIsOpen, defaultValues, transaction
       }}>
       <DialogTrigger asChild>
 
-      </DialogTrigger>
-      <DialogContent>
+      </DialogTrigger><DialogContent>
         <DialogHeader>
           <DialogTitle>{isUpdate ? 'Atualizar' : 'Criar'} Transação </DialogTitle>
           <DialogDescription>
@@ -230,7 +228,6 @@ const UpsertTransactionDialog = ({ isOpen, setIsOpen, defaultValues, transaction
                 <FormItem>
                   <FormLabel>Data</FormLabel>
                   <DatePicker value={field.value} onChange={field.onChange} />
-
                   <FormMessage />
                 </FormItem>
               )}
