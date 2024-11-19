@@ -38,3 +38,9 @@ bun dev
 - select 2.1.3
 - popover 2.1.3
 - calendar 2.1.3
+- card 2.1.3
+
+
+
+
+video = 41.31
