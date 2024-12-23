@@ -39,8 +39,9 @@ bun dev
 - popover 2.1.3
 - calendar 2.1.3
 - card 2.1.3
+- chart 2.1.3
 
 
 
 
-video = 41.31
+video = 1:00:48
