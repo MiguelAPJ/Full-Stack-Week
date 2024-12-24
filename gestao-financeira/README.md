@@ -40,6 +40,8 @@ bun dev
 - calendar 2.1.3
 - card 2.1.3
 - chart 2.1.3
+- Scroll-area 2.1.3
+- Progress 2.1.3
 
 
 
