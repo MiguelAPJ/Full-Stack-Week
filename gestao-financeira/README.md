@@ -46,4 +46,4 @@ bun dev
 
 
 
-video = 1:00:48
+video = 1.55.45

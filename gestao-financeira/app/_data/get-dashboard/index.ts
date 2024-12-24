@@ -74,13 +74,20 @@ export const getDashBoard = async (month: string) => {
     ),
   }))
 
+  const lastTransactions = await db.transaction.findMany({
+    where,
+    orderBy: { date: "desc" },
+    take: 10,
+  });
+
   return {
     balance,
     depositsTotal,
     investmentsTotal,
     expensesTotal,
     typesPercentage,
-    totalExpensePerCategory
+    totalExpensePerCategory,
+    lastTransactions: JSON.parse(JSON.stringify(lastTransactions)),
   }
 
 }
