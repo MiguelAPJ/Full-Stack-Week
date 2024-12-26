@@ -58,7 +58,7 @@ const TransactionsPieChart = ({ depositsTotal, expensesTotal, investmentsTotal, 
     {
       type: TransactionType.INVESTIMENT,
       amount: investmentsTotal,
-      fill: "#fffff"
+      fill: "#ffffff"
     }
   ];
   return (
